@@ -1,0 +1,146 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <string name="app_name">Coupon System</string>
+
+    <!-- Auth -->
+    <string name="login_title">Masuk ke Akun Anda</string>
+    <string name="login_subtitle">Coupon Production System</string>
+    <string name="hint_email">Email</string>
+    <string name="hint_password">Password</string>
+    <string name="btn_login">Masuk</string>
+    <string name="login_loading">Sedang masuk…</string>
+
+    <!-- Bottom Nav -->
+    <string name="nav_dashboard">Dashboard</string>
+    <string name="nav_projects">Proyek</string>
+    <string name="nav_settings">Pengaturan</string>
+
+    <!-- Dashboard -->
+    <string name="dashboard_title">Dashboard</string>
+    <string name="stat_total_projects">Total Proyek</string>
+    <string name="stat_generated_batches">Batch Dihasilkan</string>
+    <string name="stat_total_coupons">Total Kupon</string>
+    <string name="recent_projects">Proyek Terbaru</string>
+    <string name="btn_details">Detail</string>
+    <string name="created_by">Dibuat oleh</string>
+    <string name="no_recent_projects">Belum ada proyek terbaru.</string>
+
+    <!-- Projects -->
+    <string name="projects_title">Proyek</string>
+    <string name="empty_projects">Belum ada project.\nBuat project baru untuk memulai.</string>
+    <string name="btn_view_details">Lihat Detail</string>
+    <string name="total_coupons_label">Total Kupon</string>
+    <string name="btn_create_project">Buat Proyek Baru</string>
+
+    <!-- Create Project -->
+    <string name="create_project_title">Buat Proyek Baru</string>
+    <string name="section_basic_info">Informasi Dasar</string>
+    <string name="hint_project_name">Nama Proyek</string>
+    <string name="hint_project_code">Kode Proyek</string>
+    <string name="hint_description">Deskripsi (opsional)</string>
+    <string name="hint_total_coupons">Total Kupon</string>
+    <string name="hint_coupons_per_box">Kupon per Box</string>
+    <string name="hint_total_batches">Total Batch</string>
+    <string name="label_total_boxes">Total Box</string>
+    <string name="label_boxes_per_batch">Box per Batch</string>
+    <string name="section_prize_tiers">Tingkat Hadiah</string>
+    <string name="hint_tier_name">Nama Tier</string>
+    <string name="hint_tier_amount">Jumlah (Rp)</string>
+    <string name="hint_tier_per_box">Per Box</string>
+    <string name="label_tier_total">Total</string>
+    <string name="btn_add_tier">Tambah Tier</string>
+    <string name="tier_validation_valid">✓ Total tier sesuai: %1$d / %2$d per box</string>
+    <string name="tier_validation_invalid">✗ Total tier tidak sesuai: %1$d / %2$d per box</string>
+    <string name="btn_submit_project">Simpan Proyek</string>
+    <string name="project_created_success">Proyek berhasil dibuat!</string>
+    <string name="default_project_name">Promo Akhir Tahun</string>
+
+    <!-- Project Detail -->
+    <string name="tab_overview">Ringkasan</string>
+    <string name="tab_batches">Batch</string>
+    <string name="tab_coupons">Kupon</string>
+    <string name="label_configuration">Konfigurasi</string>
+    <string name="label_total_coupons">Total Kupon</string>
+    <string name="label_coupons_per_box">Kupon per Box</string>
+    <string name="label_total_batches">Total Batch</string>
+    <string name="label_batches">Batch</string>
+    <string name="label_created_by">Dibuat Oleh</string>
+    <string name="label_created_at">Tanggal</string>
+    <string name="label_total_boxes_config">Total Box</string>
+    <string name="label_boxes_per_batch_config">Box per Batch</string>
+
+    <!-- Batches -->
+    <string name="batch_label">Batch #%1$d</string>
+    <string name="batch_pending">Menunggu generate</string>
+    <string name="btn_generate_batch">Generate Batch</string>
+    <string name="btn_view_report">Lihat Laporan</string>
+    <string name="btn_view_coupons">Lihat Kupon</string>
+    <string name="dialog_generate_title">Generate Batch #%1$d</string>
+    <string name="hint_location">Lokasi</string>
+    <string name="btn_cancel">Batal</string>
+    <string name="btn_generate">Generate</string>
+    <string name="batch_generated_success">Batch berhasil di-generate!</string>
+
+    <!-- Batch Report -->
+    <string name="batch_report_title">Laporan Batch #%1$d</string>
+    <string name="batch_report_subtitle">Proyek: %1$s</string>
+    <string name="label_operator">Operator</string>
+    <string name="label_location">Lokasi</string>
+    <string name="label_total_boxes_report">Total Box</string>
+    <string name="label_status">Status</string>
+    <string name="box_label">Box #%1$d</string>
+    <string name="box_coupon_count">%1$d kupon</string>
+    <string name="prize_tier_count">%1$s: %2$d</string>
+
+    <!-- Coupons -->
+    <string name="coupons_disabled">Kupon belum tersedia. Status proyek masih draft.</string>
+    <string name="hint_search_coupon">Cari serial number…</string>
+    <string name="filter_all_batches">Semua Batch</string>
+    <string name="filter_all_tiers">Semua Tier</string>
+    <string name="label_serial">Serial</string>
+    <string name="label_box">Box</string>
+    <string name="label_position">Posisi</string>
+    <string name="label_prize_tier">Tier Hadiah</string>
+    <string name="label_amount">Nominal</string>
+    <string name="btn_export_excel">Export Excel</string>
+    <string name="export_started">Mengunduh file export…</string>
+    <string name="export_complete">Export selesai disimpan.</string>
+    <string name="page_indicator">Halaman %1$d dari %2$d</string>
+    <string name="btn_previous">Sebelumnya</string>
+    <string name="btn_next">Selanjutnya</string>
+
+    <!-- Delete -->
+    <string name="dialog_delete_title">Hapus Proyek</string>
+    <string name="dialog_delete_message">Apakah Anda yakin ingin menghapus proyek ini? Tindakan ini tidak dapat dibatalkan.</string>
+    <string name="btn_delete">Hapus</string>
+    <string name="project_deleted_success">Proyek berhasil dihapus.</string>
+
+    <!-- Settings -->
+    <string name="settings_title">Pengaturan</string>
+    <string name="section_profile">Profil</string>
+    <string name="hint_name">Nama</string>
+    <string name="btn_save_profile">Simpan Profil</string>
+    <string name="section_password">Ubah Password</string>
+    <string name="hint_current_password">Password Saat Ini</string>
+    <string name="hint_new_password">Password Baru</string>
+    <string name="hint_confirm_password">Konfirmasi Password</string>
+    <string name="btn_change_password">Ubah Password</string>
+    <string name="section_appearance">Tampilan</string>
+    <string name="theme_light">Terang</string>
+    <string name="theme_dark">Gelap</string>
+    <string name="theme_system">Sistem</string>
+    <string name="btn_logout">Keluar</string>
+    <string name="dialog_logout_title">Keluar</string>
+    <string name="dialog_logout_message">Apakah Anda yakin ingin keluar dari akun ini?</string>
+    <string name="feature_not_available">Fitur belum tersedia</string>
+    <string name="password_changed_success">Password berhasil diubah.</string>
+    <string name="profile_saved_success">Profil berhasil disimpan.</string>
+
+    <!-- Common -->
+    <string name="error_generic">Terjadi kesalahan. Silakan coba lagi.</string>
+    <string name="error_no_internet">Tidak ada koneksi internet.</string>
+    <string name="loading">Memuat…</string>
+    <string name="sort_asc">A-Z ↑</string>
+    <string name="sort_desc">Z-A ↓</string>
+    <string name="per_page_label">Per halaman</string>
+</resources>

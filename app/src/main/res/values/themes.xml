@@ -1,0 +1,88 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources xmlns:tools="http://schemas.android.com/tools">
+
+    <style name="Theme.CouponSystem" parent="Theme.Material3.Light.NoActionBar">
+        <item name="colorPrimary">@color/navy_700</item>
+        <item name="colorOnPrimary">@color/white</item>
+        <item name="colorPrimaryContainer">@color/navy_100</item>
+        <item name="colorOnPrimaryContainer">@color/navy_900</item>
+        <item name="colorSecondary">@color/sky_500</item>
+        <item name="colorOnSecondary">@color/white</item>
+        <item name="colorSecondaryContainer">@color/sky_100</item>
+        <item name="colorOnSecondaryContainer">@color/navy_900</item>
+        <item name="colorTertiary">@color/sky_600</item>
+        <item name="colorOnTertiary">@color/white</item>
+        <item name="colorError">@color/status_error_text</item>
+        <item name="colorOnError">@color/white</item>
+        <item name="android:colorBackground">@color/background_light</item>
+        <item name="colorOnBackground">@color/on_surface_light</item>
+        <item name="colorSurface">@color/surface_light</item>
+        <item name="colorOnSurface">@color/on_surface_light</item>
+        <item name="colorOnSurfaceVariant">@color/on_surface_variant_light</item>
+        <item name="colorOutline">@color/card_stroke_light</item>
+        <item name="android:statusBarColor">@color/navy_800</item>
+        <item name="android:navigationBarColor">@color/surface_light</item>
+        <item name="android:windowLightStatusBar" tools:targetApi="m">false</item>
+    </style>
+
+    <style name="Theme.CouponSystem.Dark" parent="Theme.Material3.Dark.NoActionBar">
+        <item name="colorPrimary">@color/sky_400</item>
+        <item name="colorOnPrimary">@color/navy_900</item>
+        <item name="colorPrimaryContainer">@color/navy_700</item>
+        <item name="colorOnPrimaryContainer">@color/sky_100</item>
+        <item name="colorSecondary">@color/sky_300</item>
+        <item name="colorOnSecondary">@color/navy_900</item>
+        <item name="colorSecondaryContainer">@color/navy_600</item>
+        <item name="colorOnSecondaryContainer">@color/sky_100</item>
+        <item name="colorTertiary">@color/sky_400</item>
+        <item name="colorOnTertiary">@color/navy_900</item>
+        <item name="colorError">@color/status_error_text</item>
+        <item name="colorOnError">@color/white</item>
+        <item name="android:colorBackground">@color/background_dark</item>
+        <item name="colorOnBackground">@color/on_surface_dark</item>
+        <item name="colorSurface">@color/surface_dark</item>
+        <item name="colorOnSurface">@color/on_surface_dark</item>
+        <item name="colorOnSurfaceVariant">@color/on_surface_variant_dark</item>
+        <item name="colorOutline">@color/card_stroke_dark</item>
+        <item name="android:statusBarColor">@color/background_dark</item>
+        <item name="android:navigationBarColor">@color/surface_dark</item>
+        <item name="android:windowLightStatusBar" tools:targetApi="m">false</item>
+    </style>
+
+    <style name="Widget.CouponSystem.TextInputLayout" parent="Widget.Material3.TextInputLayout.OutlinedBox">
+        <item name="boxStrokeColor">@color/navy_400</item>
+        <item name="hintTextColor">@color/navy_700</item>
+    </style>
+
+    <style name="Widget.CouponSystem.Button" parent="Widget.Material3.Button">
+        <item name="backgroundTint">@color/navy_700</item>
+        <item name="android:textColor">@color/white</item>
+        <item name="cornerRadius">12dp</item>
+    </style>
+
+    <style name="Widget.CouponSystem.Button.Outlined" parent="Widget.Material3.Button.OutlinedButton">
+        <item name="strokeColor">@color/navy_400</item>
+        <item name="android:textColor">@color/navy_700</item>
+        <item name="cornerRadius">12dp</item>
+    </style>
+
+    <style name="Widget.CouponSystem.Card" parent="Widget.Material3.CardView.Elevated">
+        <item name="cardElevation">1dp</item>
+        <item name="cardCornerRadius">16dp</item>
+        <item name="strokeWidth">1dp</item>
+        <item name="strokeColor">@color/card_stroke_light</item>
+    </style>
+
+    <style name="Widget.CouponSystem.BottomNav" parent="Widget.Material3.BottomNavigationView">
+        <item name="itemIconTint">@color/bottom_nav_color</item>
+        <item name="itemTextColor">@color/bottom_nav_color</item>
+        <item name="backgroundTint">@color/surface_light</item>
+    </style>
+
+    <style name="Widget.CouponSystem.TabLayout" parent="Widget.Material3.TabLayout">
+        <item name="tabIndicatorColor">@color/navy_700</item>
+        <item name="tabSelectedTextColor">@color/navy_700</item>
+        <item name="tabTextColor">@color/on_surface_variant_light</item>
+    </style>
+
+</resources>
