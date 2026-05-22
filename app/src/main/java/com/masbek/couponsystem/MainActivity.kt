@@ -10,6 +10,7 @@ import androidx.appcompat.app.AppCompatActivity
 import androidx.appcompat.app.AppCompatDelegate
 import androidx.core.content.ContextCompat
 import androidx.navigation.NavController
+import androidx.navigation.NavOptions
 import androidx.navigation.fragment.NavHostFragment
 import androidx.navigation.ui.setupWithNavController
 import com.masbek.couponsystem.databinding.ActivityMainBinding
@@ -34,8 +35,11 @@ class MainActivity : AppCompatActivity() {
     }
 
     override fun onCreate(savedInstanceState: Bundle?) {
-        applyTheme()
         super.onCreate(savedInstanceState)
+
+        // Apply theme AFTER super.onCreate() — Hilt injects sessionManager during super.onCreate()
+        applyTheme()
+
         binding = ActivityMainBinding.inflate(layoutInflater)
         setContentView(binding.root)
 
@@ -55,7 +59,10 @@ class MainActivity : AppCompatActivity() {
         }
 
         if (sessionManager.isLoggedIn()) {
-            navController.navigate(R.id.dashboardFragment)
+            val navOptions = NavOptions.Builder()
+                .setPopUpTo(R.id.loginFragment, true)
+                .build()
+            navController.navigate(R.id.dashboardFragment, null, navOptions)
         }
 
         ContextCompat.registerReceiver(
@@ -75,7 +82,10 @@ class MainActivity : AppCompatActivity() {
 
     private fun navigateToLogin() {
         runOnUiThread {
-            navController.navigate(R.id.loginFragment)
+            val navOptions = NavOptions.Builder()
+                .setPopUpTo(R.id.nav_graph, true)
+                .build()
+            navController.navigate(R.id.loginFragment, null, navOptions)
         }
     }
 

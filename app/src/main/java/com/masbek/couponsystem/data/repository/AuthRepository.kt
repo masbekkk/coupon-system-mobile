@@ -28,7 +28,7 @@ class AuthRepository @Inject constructor(
                     val body = response.body()!!
                     sessionManager.saveToken(body.token)
                     sessionManager.saveUser(
-                        body.user.id.toString(),
+                        body.user.id,
                         body.user.name,
                         body.user.email
                     )
