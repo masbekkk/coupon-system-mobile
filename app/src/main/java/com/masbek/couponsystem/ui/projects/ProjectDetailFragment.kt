@@ -217,18 +217,62 @@ class BatchesTabFragment : Fragment() {
     }
 
     private fun showGenerateDialog(vm: ProjectDetailViewModel, batch: Batch) {
-        val input = EditText(requireContext()).apply {
+        val context = requireContext()
+        val density = resources.displayMetrics.density
+        val marginHorizontal = (24 * density).toInt()
+        val marginVertical = (8 * density).toInt()
+
+        val frameLayout = android.widget.FrameLayout(context)
+        val textInputLayout = com.google.android.material.textfield.TextInputLayout(
+            context,
+            null,
+            com.google.android.material.R.attr.textInputStyle
+        ).apply {
             hint = getString(R.string.hint_location)
-            setPadding(64, 32, 64, 16)
+            boxBackgroundMode = com.google.android.material.textfield.TextInputLayout.BOX_BACKGROUND_OUTLINE
         }
-        MaterialAlertDialogBuilder(requireContext())
+
+        val input = com.google.android.material.textfield.TextInputEditText(textInputLayout.context).apply {
+            id = View.generateViewId()
+            inputType = android.text.InputType.TYPE_CLASS_TEXT
+            textSize = 15f
+            isFocusable = true
+            isFocusableInTouchMode = true
+        }
+
+        textInputLayout.addView(input)
+
+        val lp = android.widget.FrameLayout.LayoutParams(
+            ViewGroup.LayoutParams.MATCH_PARENT,
+            ViewGroup.LayoutParams.WRAP_CONTENT
+        ).apply {
+            marginStart = marginHorizontal
+            marginEnd = marginHorizontal
+            topMargin = marginVertical
+            bottomMargin = marginVertical
+        }
+        frameLayout.addView(textInputLayout, lp)
+
+        val dialog = MaterialAlertDialogBuilder(context)
             .setTitle(getString(R.string.dialog_generate_title, batch.batchNumber))
-            .setView(input)
+            .setView(frameLayout)
             .setNegativeButton(R.string.btn_cancel, null)
             .setPositiveButton(R.string.btn_generate) { _, _ ->
                 vm.generateBatch(batch.id, input.text.toString())
             }
-            .show()
+            .create()
+
+        // Clear FLAG_NOT_FOCUSABLE to allow keyboard interaction in portrait mode
+        dialog.window?.clearFlags(android.view.WindowManager.LayoutParams.FLAG_NOT_FOCUSABLE)
+        dialog.window?.setSoftInputMode(android.view.WindowManager.LayoutParams.SOFT_INPUT_STATE_ALWAYS_VISIBLE)
+
+        dialog.setOnShowListener {
+            input.requestFocus()
+            val imm = context.getSystemService(Context.INPUT_METHOD_SERVICE) as? android.view.inputmethod.InputMethodManager
+            imm?.showSoftInput(input, android.view.inputmethod.InputMethodManager.SHOW_IMPLICIT)
+        }
+
+        dialog.show()
     }
 
     override fun onDestroyView() { super.onDestroyView(); _binding = null }
