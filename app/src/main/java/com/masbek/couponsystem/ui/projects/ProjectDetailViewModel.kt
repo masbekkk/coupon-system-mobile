@@ -45,7 +45,7 @@ class ProjectDetailViewModel @Inject constructor(
     var couponPerPage = 25
     var couponSearch: String? = null
     var couponBatchId: Int? = null
-    var couponPrizeTier: String? = null
+    var couponTierId: Int? = null
     var couponSort: String? = null
 
     private var searchJob: Job? = null
@@ -80,7 +80,7 @@ class ProjectDetailViewModel @Inject constructor(
         viewModelScope.launch {
             when (val result = couponRepository.getCoupons(
                 projectId, couponPage, couponPerPage,
-                couponSearch, couponBatchId, couponPrizeTier, couponSort
+                couponSearch, couponBatchId, couponTierId, couponSort
             )) {
                 is Result.Success -> _couponsState.value = CouponsState.Success(result.data)
                 is Result.Error -> _couponsState.value = CouponsState.Error(result.message)

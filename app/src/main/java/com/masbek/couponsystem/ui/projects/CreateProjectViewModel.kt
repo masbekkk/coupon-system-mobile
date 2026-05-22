@@ -39,12 +39,12 @@ class CreateProjectViewModel @Inject constructor(
 
     private fun initDefaultTiers() {
         tiers.value = mutableListOf(
-            TierItem("Rp100k", 100000, 5),
-            TierItem("Rp50k", 50000, 10),
-            TierItem("Rp20k", 20000, 25),
-            TierItem("Rp10k", 10000, 50),
-            TierItem("Rp5k", 5000, 100),
-            TierItem("Belum Beruntung", 0, 810)
+            TierItem("Hadiah Rp 100.000", 100000, 5),
+            TierItem("Hadiah Rp 50.000", 50000, 10),
+            TierItem("Hadiah Rp 20.000", 20000, 25),
+            TierItem("Hadiah Rp 10.000", 10000, 50),
+            TierItem("Hadiah Rp 5.000", 5000, 100),
+            TierItem("Anda Belum Beruntung", 0, 810)
         )
     }
 
@@ -66,7 +66,6 @@ class CreateProjectViewModel @Inject constructor(
         val current = tiers.value ?: return
         if (index in current.indices) {
             current[index] = TierItem(name, amount, perBoxQty)
-            tiers.value = current
         }
     }
 
@@ -83,15 +82,25 @@ class CreateProjectViewModel @Inject constructor(
         if (!isValid()) return
         _state.value = CreateState.Loading
         viewModelScope.launch {
+            val totalBoxesVal = totalBoxes
+            val boxesPerBatchVal = boxesPerBatch
             val request = CreateProjectRequest(
                 name = projectName,
                 code = projectCode.uppercase(),
                 description = description.ifBlank { null },
                 totalCoupons = totalCoupons,
                 couponsPerBox = couponsPerBox,
+                totalBoxes = totalBoxesVal,
                 totalBatches = totalBatches,
-                prizeTiers = tiers.value?.map { TierRequest(it.name, it.amount, it.perBoxQty) }
-                    ?: emptyList()
+                boxesPerBatch = boxesPerBatchVal,
+                tiers = tiers.value?.map {
+                    TierRequest(
+                        name = it.name,
+                        amount = it.amount,
+                        totalQuantity = it.perBoxQty * totalBoxesVal,
+                        perBoxQuantity = it.perBoxQty
+                    )
+                } ?: emptyList()
             )
             when (val result = projectRepository.createProject(request)) {
                 is Result.Success -> _state.value = CreateState.Success

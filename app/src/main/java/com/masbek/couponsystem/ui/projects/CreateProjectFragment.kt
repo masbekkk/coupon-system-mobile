@@ -150,6 +150,10 @@ class TierAdapter(
     override fun onBindViewHolder(holder: VH, position: Int) {
         val tier = tiers[position]
         holder.binding.apply {
+            etTierName.removeTextChangedListener(etTierName.tag as? TextWatcher)
+            etTierAmount.removeTextChangedListener(etTierAmount.tag as? TextWatcher)
+            etTierPerBox.removeTextChangedListener(etTierPerBox.tag as? TextWatcher)
+
             if (etTierName.text.toString() != tier.name) etTierName.setText(tier.name)
             if (etTierAmount.text.toString() != tier.amount.toString()) etTierAmount.setText(if (tier.amount == 0 && tier.name.isBlank()) "" else tier.amount.toString())
             if (etTierPerBox.text.toString() != tier.perBoxQty.toString()) etTierPerBox.setText(if (tier.perBoxQty == 0 && tier.name.isBlank()) "" else tier.perBoxQty.toString())
@@ -170,10 +174,6 @@ class TierAdapter(
                 }
             }
 
-            etTierName.removeTextChangedListener(etTierName.tag as? TextWatcher)
-            etTierAmount.removeTextChangedListener(etTierAmount.tag as? TextWatcher)
-            etTierPerBox.removeTextChangedListener(etTierPerBox.tag as? TextWatcher)
-
             etTierName.addTextChangedListener(watcher)
             etTierAmount.addTextChangedListener(watcher)
             etTierPerBox.addTextChangedListener(watcher)
@@ -182,7 +182,12 @@ class TierAdapter(
             etTierAmount.tag = watcher
             etTierPerBox.tag = watcher
 
-            btnDeleteTier.setOnClickListener { onDelete(holder.adapterPosition) }
+            btnDeleteTier.setOnClickListener {
+                val pos = holder.adapterPosition
+                if (pos != RecyclerView.NO_POSITION) {
+                    onDelete(pos)
+                }
+            }
         }
     }
 

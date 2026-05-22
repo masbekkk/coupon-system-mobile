@@ -59,7 +59,7 @@ interface ApiService {
         @Query("per_page") perPage: Int = 25,
         @Query("search") search: String? = null,
         @Query("batch_id") batchId: Int? = null,
-        @Query("prize_tier") prizeTier: String? = null,
+        @Query("tier_id") tierId: Int? = null,
         @Query("sort") sort: String? = null
     ): Response<CouponListResponse>
 

@@ -343,15 +343,15 @@ class CouponsTabFragment : Fragment() {
         }
 
         val tierItems = mutableListOf(getString(R.string.filter_all_tiers))
-        val tierNames = mutableListOf<String?>(null)
+        val tierIds = mutableListOf<Int?>(null)
         project.prizeTiers?.forEach {
             tierItems.add(it.name)
-            tierNames.add(it.name)
+            tierIds.add(it.id)
         }
         binding.spinnerTier.adapter = ArrayAdapter(requireContext(), android.R.layout.simple_spinner_dropdown_item, tierItems)
         binding.spinnerTier.onItemSelectedListener = object : AdapterView.OnItemSelectedListener {
             override fun onItemSelected(parent: AdapterView<*>?, v: View?, pos: Int, id: Long) {
-                vm.couponPrizeTier = tierNames.getOrNull(pos)
+                vm.couponTierId = tierIds.getOrNull(pos)
                 vm.couponPage = 1
                 vm.loadCoupons()
             }

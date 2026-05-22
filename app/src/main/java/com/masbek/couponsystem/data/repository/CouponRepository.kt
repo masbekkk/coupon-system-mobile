@@ -20,12 +20,12 @@ class CouponRepository @Inject constructor(
         perPage: Int = 25,
         search: String? = null,
         batchId: Int? = null,
-        prizeTier: String? = null,
+        tierId: Int? = null,
         sort: String? = null
     ): Result<CouponListResponse> = withContext(Dispatchers.IO) {
         try {
             val response = api.getProjectCoupons(
-                projectId, page, perPage, search, batchId, prizeTier, sort
+                projectId, page, perPage, search, batchId, tierId, sort
             )
             if (response.isSuccessful) {
                 Result.Success(response.body()!!)

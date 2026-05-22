@@ -141,40 +141,36 @@ Authorization: Bearer {auth_token}
 {
   "data": [
     {
-      "id": 1,
-      "code": "PROJ-X1",
-      "name": "Kupon Gosok Ramadhan",
-      "description": "Proyek kupon gosok edisi khusus lebaran.",
+      "id": 7,
+      "code": "TESTTT3",
+      "name": "Promo Akhir Tahun",
+      "description": "Generating instant prize coupons",
       "status": "ready",
-      "total_coupons": 10000,
-      "coupons_per_box": 1000,
-      "total_boxes": 10,
-      "total_batches": 2,
-      "boxes_per_batch": 5,
-      "created_by": "Operator",
-      "created_at": "2026-05-21 12:00:00",
-      "prize_tiers": [
-        {
-          "id": 1,
-          "name": "Jackpot Utama",
-          "amount": 1000000,
-          "per_box_qty": 1,
-          "total_qty": 10
-        }
-      ]
+      "config": {
+        "total_coupons": 10000,
+        "total_boxes": 10,
+        "coupons_per_box": 1000,
+        "total_batches": 2,
+        "boxes_per_batch": 5
+      },
+      "creator": {
+        "id": "019e4578-838f-711a-8634-71af24204a4d",
+        "name": "Admin User"
+      },
+      "created_at": "2026-05-21T22:15:27+07:00"
     }
   ],
   "links": {
-    "first": "https://domain.com/api/v1/projects?page=1",
-    "last": "https://domain.com/api/v1/projects?page=2",
+    "first": "http://127.0.0.1:8000/api/v1/projects?page=1",
+    "last": "http://127.0.0.1:8000/api/v1/projects?page=1",
     "prev": null,
-    "next": "https://domain.com/api/v1/projects?page=2"
+    "next": null
   },
   "meta": {
     "current_page": 1,
-    "last_page": 2,
+    "last_page": 1,
     "per_page": 15,
-    "total": 20
+    "total": 2
   }
 }
 ```
@@ -189,55 +185,62 @@ Authorization: Bearer {auth_token}
 #### Request Body
 ```json
 {
-  "name": "Kupon Gosok Ramadhan",
-  "code": "PROJ-X1",
-  "description": "Proyek kupon gosok edisi khusus lebaran.",
+  "name": "Promo Akhir Tahun",
+  "code": "TESTTT3",
+  "description": "Generating instant prize coupons",
   "total_coupons": 10000,
   "coupons_per_box": 1000,
+  "total_boxes": 10,
   "total_batches": 2,
-  "prize_tiers": [
+  "boxes_per_batch": 5,
+  "tiers": [
     {
-      "name": "Jackpot Utama",
-      "amount": 1000000,
-      "per_box_qty": 1
+      "name": "Hadiah Rp 100.000",
+      "amount": 100000,
+      "total_quantity": 10,
+      "per_box_quantity": 1
     },
     {
-      "name": "ZonK",
+      "name": "Anda Belum Beruntung",
       "amount": 0,
-      "per_box_qty": 999
+      "total_quantity": 8100,
+      "per_box_quantity": 810
     }
   ]
 }
 ```
-> **Catatan Validasi Proyek**: Total `per_box_qty` dari semua `prize_tiers` **harus persis sama** dengan nilai `coupons_per_box`.
+> **Catatan Validasi Proyek**: Total `per_box_quantity` dari semua `tiers` **harus persis sama** dengan nilai `coupons_per_box`.
 
 #### Response Sukses (`201 Created`)
 ```json
 {
+  "message": "Project created successfully",
   "data": {
-    "id": 1,
-    "code": "PROJ-X1",
-    "name": "Kupon Gosok Ramadhan",
-    "description": "Proyek kupon gosok edisi khusus lebaran.",
+    "id": 7,
+    "code": "TESTTT3",
+    "name": "Promo Akhir Tahun",
+    "description": "Generating instant prize coupons",
     "status": "draft",
-    "total_coupons": 10000,
-    "coupons_per_box": 1000,
-    "total_boxes": 10,
-    "total_batches": 2,
-    "boxes_per_batch": 5,
-    "created_by": "Operator",
-    "created_at": "2026-05-21 14:00:00",
+    "config": {
+      "total_coupons": 10000,
+      "total_boxes": 10,
+      "coupons_per_box": 1000,
+      "total_batches": 2,
+      "boxes_per_batch": 5
+    },
+    "creator": {
+      "id": "019e4578-838f-711a-8634-71af24204a4d",
+      "name": "Admin User"
+    },
     "prize_tiers": [
       {
-        "id": 1,
-        "name": "Jackpot Utama",
-        "amount": 1000000,
-        "per_box_qty": 1,
-        "total_qty": 10
+        "id": 37,
+        "name": "Hadiah Rp 100.000",
+        "amount": 100000
       }
-    ]
-  },
-  "message": "Proyek berhasil dibuat"
+    ],
+    "created_at": "2026-05-21T22:15:27+07:00"
+  }
 }
 ```
 
@@ -252,27 +255,31 @@ Authorization: Bearer {auth_token}
 ```json
 {
   "data": {
-    "id": 1,
-    "code": "PROJ-X1",
-    "name": "Kupon Gosok Ramadhan",
-    "description": "Proyek kupon gosok edisi khusus lebaran.",
-    "status": "draft",
-    "total_coupons": 10000,
-    "coupons_per_box": 1000,
-    "total_boxes": 10,
-    "total_batches": 2,
-    "boxes_per_batch": 5,
-    "created_by": "Operator",
-    "created_at": "2026-05-21 14:00:00",
+    "id": 7,
+    "code": "TESTTT3",
+    "name": "Promo Akhir Tahun",
+    "description": "Generating instant prize coupons",
+    "status": "ready",
+    "config": {
+      "total_coupons": 10000,
+      "total_boxes": 10,
+      "coupons_per_box": 1000,
+      "total_batches": 2,
+      "boxes_per_batch": 5
+    },
+    "creator": {
+      "id": "019e4578-838f-711a-8634-71af24204a4d",
+      "name": "Admin User"
+    },
     "prize_tiers": [
-      {
-        "id": 1,
-        "name": "Jackpot Utama",
-        "amount": 1000000,
-        "per_box_qty": 1,
-        "total_qty": 10
-      }
-    ]
+      {"id": 37, "name": "Hadiah Rp 100.000", "amount": 100000},
+      {"id": 38, "name": "Hadiah Rp 50.000", "amount": 50000},
+      {"id": 39, "name": "Hadiah Rp 20.000", "amount": 20000},
+      {"id": 40, "name": "Hadiah Rp 10.000", "amount": 10000},
+      {"id": 41, "name": "Hadiah Rp 5.000", "amount": 5000},
+      {"id": 42, "name": "Anda Belum Beruntung", "amount": 0}
+    ],
+    "created_at": "2026-05-21T22:15:27+07:00"
   }
 }
 ```
