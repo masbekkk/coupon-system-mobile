@@ -52,6 +52,9 @@ class CreateProjectFragment : Fragment() {
             override fun afterTextChanged(s: Editable?) { syncFieldsToViewModel() }
         }
 
+        binding.etName.addTextChangedListener(textWatcher)
+        binding.etCode.addTextChangedListener(textWatcher)
+        binding.etDescription.addTextChangedListener(textWatcher)
         binding.etTotalCoupons.addTextChangedListener(textWatcher)
         binding.etCouponsPerBox.addTextChangedListener(textWatcher)
         binding.etTotalBatches.addTextChangedListener(textWatcher)
@@ -65,9 +68,16 @@ class CreateProjectFragment : Fragment() {
             viewModel.submit()
         }
 
+        var previousSize = viewModel.tiers.value?.size ?: 0
         viewModel.tiers.observe(viewLifecycleOwner) { tiers ->
             tierAdapter.updateData(tiers)
             updateTierValidation()
+            if (tiers.size > previousSize) {
+                binding.root.post {
+                    binding.root.fullScroll(View.FOCUS_DOWN)
+                }
+            }
+            previousSize = tiers.size
         }
 
         viewModel.state.observe(viewLifecycleOwner) { state ->
@@ -101,11 +111,21 @@ class CreateProjectFragment : Fragment() {
         viewModel.couponsPerBox = binding.etCouponsPerBox.text.toString().toIntOrNull() ?: 0
         viewModel.totalBatches = binding.etTotalBatches.text.toString().toIntOrNull() ?: 0
 
-        binding.etTotalBoxes.setText(viewModel.totalBoxes.toString())
-        binding.etBoxesPerBatch.setText(viewModel.boxesPerBatch.toString())
+        val newTotalBoxes = viewModel.totalBoxes
+        val totalBoxesStr = newTotalBoxes.toString()
+        if (binding.etTotalBoxes.text.toString() != totalBoxesStr) {
+            binding.etTotalBoxes.setText(totalBoxesStr)
+        }
 
-        tierAdapter.totalBoxes = viewModel.totalBoxes
-        tierAdapter.notifyDataSetChanged()
+        val boxesPerBatchStr = viewModel.boxesPerBatch.toString()
+        if (binding.etBoxesPerBatch.text.toString() != boxesPerBatchStr) {
+            binding.etBoxesPerBatch.setText(boxesPerBatchStr)
+        }
+
+        if (tierAdapter.totalBoxes != newTotalBoxes) {
+            tierAdapter.totalBoxes = newTotalBoxes
+            tierAdapter.notifyDataSetChanged()
+        }
         updateTierValidation()
     }
 
